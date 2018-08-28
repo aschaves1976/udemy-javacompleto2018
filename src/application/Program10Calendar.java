@@ -39,7 +39,6 @@ public class Program10Calendar {
 		int month = 1 + cal.get(Calendar.MONTH);
 		System.out.println("Month: " + month);
 
-		Period period = new Period();
 
 	}
 
