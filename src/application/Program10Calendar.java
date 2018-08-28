@@ -23,6 +23,7 @@ public class Program10Calendar {
 
 		int dias = cal2.get(Calendar.DAY_OF_YEAR) - cal.get(Calendar.DAY_OF_YEAR);
 
+		// Not working well
 		System.out.println(
 				"Quantidade de dias entre " + sdf.format(d) + " e " + sdf.format(sd) + " é: " + dias + " dias.");
 
@@ -37,6 +38,8 @@ public class Program10Calendar {
 
 		int month = 1 + cal.get(Calendar.MONTH);
 		System.out.println("Month: " + month);
+
+		Period period = new Period();
 
 	}
 
