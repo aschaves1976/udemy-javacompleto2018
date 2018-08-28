@@ -10,11 +10,21 @@ public class Program10Calendar {
 	public static void main(String[] args) {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 		Date d = Date.from(Instant.parse("2018-06-25T15:42:07Z"));
+		Date sd = new Date();
+
 		System.out.println(sdf.format(d));
 
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(d);
 		cal.add(Calendar.HOUR_OF_DAY, 4);
+
+		Calendar cal2 = Calendar.getInstance();
+		cal.setTime(sd);
+
+		int dias = cal2.get(Calendar.DAY_OF_YEAR) - cal.get(Calendar.DAY_OF_YEAR);
+
+		System.out.println(
+				"Quantidade de dias entre " + sdf.format(d) + " e " + sdf.format(sd) + " é: " + dias + " dias.");
 
 		d = cal.getTime();
 		System.out.println(sdf.format(d));
