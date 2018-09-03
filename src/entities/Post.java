@@ -15,11 +15,6 @@ public class Post {
 	private List<Comment> comments = new ArrayList<>();
 	private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 
-	// Formatter fmt = new Formatter(sbdr);
-
-	// fmt.format("%s%n%d Likes -
-	// %t%n%s",getTitle(),getLikes(),getMoment(),getContent());
-
 	public Post() {
 
 	}
