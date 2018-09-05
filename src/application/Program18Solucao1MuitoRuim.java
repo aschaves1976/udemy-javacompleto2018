@@ -6,26 +6,24 @@ import java.util.Date;
 import java.util.Scanner;
 
 import model.entities.Reservation;
+import model.exceptions.DomainException;
 
 public class Program18Solucao1MuitoRuim {
 
-	public static void main(String[] args) throws ParseException {
+	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		try {
+			System.out.print("Room number: ");
+			int number = sc.nextInt();
+			sc.nextLine();
 
-		System.out.print("Room number: ");
-		int number = sc.nextInt();
-		sc.nextLine();
+			System.out.print("Check-in date (DD/MM/YYYY): ");
+			Date checkIn = sdf.parse(sc.nextLine());
 
-		System.out.print("Check-in date (DD/MM/YYYY): ");
-		Date checkIn = sdf.parse(sc.nextLine());
+			System.out.print("Check-out date (DD/MM/YYYY): ");
+			Date checkOut = sdf.parse(sc.nextLine());
 
-		System.out.print("Check-out date (DD/MM/YYYY): ");
-		Date checkOut = sdf.parse(sc.nextLine());
-
-		if (!checkOut.after(checkIn)) {
-			System.out.println("Error in reservation: Check-out date must be after check-in date");
-		} else {
 			Reservation reservation = new Reservation(number, checkIn, checkOut);
 			System.out.println("Reservation: " + reservation);
 
@@ -37,15 +35,17 @@ public class Program18Solucao1MuitoRuim {
 			System.out.print("Check-out date (DD/MM/YYYY): ");
 			checkOut = sdf.parse(sc.nextLine());
 
-			String error = reservation.updateDates(checkIn, checkOut);
-			if (error == null) {
-				System.out.println("Reservation: " + reservation);
-			} else {
-				System.out.println("Error in reservation: " + error);
-			}
-
+			reservation.updateDates(checkIn, checkOut);
+			System.out.println("Reservation: " + reservation);
+		} catch (ParseException e) {
+			System.out.println("Invalid Date Format");
+		} catch (DomainException e) {
+			System.out.println("Error in reservation: " + e.getMessage());
+		} catch (RuntimeException e) {
+			System.out.println("Unexpected Error: " + e.toString());
+		} finally {
+			sc.close();
 		}
-		sc.close();
 	}
 
 }
